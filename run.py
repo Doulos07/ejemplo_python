@@ -26,9 +26,11 @@ correct_answers_index = [1, 2, 0, 3, 1]
 
 TotalPreguntas = 0
 valido = True
+puntuacion = 0
 
 # El usuario deberá contestar 3 preguntas
-while (TotalPreguntas <= 3 and valido) :
+while (TotalPreguntas < 3 and valido) :
+     TotalPreguntas += 1
      # Se selecciona una pregunta aleatoria
      question_index = random.randint(0, len(questions) - 1)
      # Se muestra la pregunta y las respuestas posibles
@@ -41,15 +43,19 @@ while (TotalPreguntas <= 3 and valido) :
          if (user_answer < 0 or user_answer > 4 ) :
              print("respuesta no valida")
              valido = False
+             #puntuacion -= 0.5
              break
          # Se verifica si la respuesta es correcta
          if user_answer == correct_answers_index[question_index]:
              print("¡Correcto!")
+             puntuacion += 1
              break
          else:
              # Si el usuario no responde correctamente después de 2 intentos,
              # se muestra la respuesta correcta
              print("Incorrecto. La respuesta correcta es:")
              print(answers[question_index] [correct_answers_index[question_index]])
+             puntuacion -= 0.5
      # Se imprime un blanco al final de la pregunta
      print()
+print(f'Puntacion total : {puntuacion}')
