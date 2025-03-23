@@ -29,7 +29,7 @@ valido = True
 puntuacion = 0
 
 #se crea una lista de tuplas con 'preguntas, respuestas y respuesta correcta' con repeticion
-questions_to_ask = random.choices(list(zip(questions,
+questions_to_ask = random.sample(list(zip(questions,
 answers, correct_answers_index)), k=3)
 
 # El usuario deberá contestar 3 preguntas
@@ -57,8 +57,7 @@ for pregunta, respuestas, respuesta_correcta in questions_to_ask :
          else:
              # Si el usuario no responde correctamente después de 2 intentos,
              # se muestra la respuesta correcta
-             print("Incorrecto. La respuesta correcta es:")
-             print(f'{respuesta_correcta}')
+             print(f"Incorrecto. La respuesta correcta es: {respuestas[respuesta_correcta]}")
              puntuacion -= 0.5
      # Se imprime un blanco al final de la pregunta
      print()
