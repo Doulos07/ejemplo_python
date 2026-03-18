@@ -1,6 +1,7 @@
 import random
 import string
 
+'''
 words = [
     "python",
     "programa",
@@ -11,14 +12,29 @@ words = [
     "entero",
     "lista",
 ]
+'''
+
+categorias = {
+    "conceptos": ["programa", "variable", "funcion", "bucle"],
+    "datos": ["cadena", "entero", "lista"],
+    "lenguajes": ["python"]
+}
 
 letters = string.ascii_lowercase
-word = random.choice(words)
+# word = random.choice(words)
 guessed = []
 attempts = 6
 
 print("¡Bienvenido al Ahorcado!")
 print()
+print('ingrese una de las siguentes categorias')
+print(f'{categorias.keys()}')
+categoria = input('ingrese el nombre de una categoria si lo desea sino ingrese -1')
+if categoria != '-1':
+    word = random.choice(categorias[categoria])
+else:
+    lista_palabras = random.choice(list(categorias.values()))
+    word = random.choice(lista_palabras)
 
 while attempts > 0:
     # Mostrar progreso: letras adivinadas y guiones para las que faltan
